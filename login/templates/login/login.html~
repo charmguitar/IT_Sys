@@ -1,0 +1,35 @@
+{% extends "login/base.html" %}
+
+{% load static %}
+
+{% block title %}ログインページ{% endblock %}
+
+{% block login_index %}
+
+
+<!--
+<a href="./make_account">アカウント作成</a>
+
+<font color="red">{{warning_text}}</font>
+
+<p>ここは、{{page_name}}です。</p>
+-->
+
+
+<form method="post" id="login">
+{% csrf_token %}
+    <img src="/static/login/img/logo.svg"></img>
+    <fieldset id="inputs">
+      {{ form.username }} 
+      {{ form.password }}
+    </fieldset>
+    <fieldset id="actions">
+        <input type="submit" id="submit" value="ログイン">
+        <a href="/">パスワードを忘れましたか？</a><a href="./make_account">アカウント作成</a>
+    </fieldset>
+    <a href="/" id="back">Back to article...</a>
+</form>
+
+
+<script type="text/javascript" src="{% static 'login/js/test.js' %}"></script>
+{% endblock %}

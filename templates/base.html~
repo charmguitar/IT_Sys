@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>車両管理サイト</title>
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/responsive.css" %}" />
+</head>
+
+<body>
+
+<!-- Container -->
+
+<!-- END Container -->
+
+</body>
+</html>

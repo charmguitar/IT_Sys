@@ -1,0 +1,56 @@
+from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.shortcuts import render, redirect
+from .form import UserLoginForm, UserCreateForm
+
+
+def make_account(request):
+    page_name = "アカウント作成ページ"
+    warning_text = ""
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        password_check = request.POST['password_check']
+
+        form = UserCreateForm(request.POST)
+
+        if password == password_check:
+            user = form.save()
+            login(request, user)
+            return redirect('./mycalendar')
+        else:
+            warning_text = '適切な値を入力してください'
+            context = {'page_name': page_name,'warning_text':warning_text,'form':form }
+
+    else:
+        form = UserCreateForm()
+        context = {'page_name': page_name,'form':form }
+
+    return render(request, 'login/make_account.html', context)
+
+
+def login_member(request):
+    page_name = "ログインページ"
+    warning_text = ""
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user.is_active:
+            login(request, user)
+            return redirect('./mycalendar')
+        else:
+            warning_text = '適切な値を入力してください'
+            context = {'page_name': page_name,'warning_text':warning_text,'form':form }
+
+    else:
+        form = AuthenticationForm()
+        context = {'page_name': page_name,'form':form }
+
+    return render(request, 'login/login.html', context)
+
+def logout_member(request):
+    logout(request)
+    return redirect('../')

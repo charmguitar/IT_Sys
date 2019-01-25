@@ -1,0 +1,28 @@
+ここでは車両の予約をする。
+
+<div class="row">
+<div class="card col-md-10">
+  <div class="card-body">
+    <font color="red">{{warning_text}}</font>
+<form action="" method="POST" >
+  {{ form.non_field_errors }}
+
+  <label style="width:150px;">{{form.name.label}}：</label>{{ form.name }}</br>
+  <label style="width:150px;">{{form.employee_number.label}}：</label>{{ form.employee_number }}</br>
+  <label style="width:150px;">{{form.start_date.label}}：</label>{{ form.start_date }}</br>
+  <label style="width:150px;">{{form.end_date.label}}：</label>{{ form.end_date }}</br>
+  <label style="width:150px;">{{form.destination.label}}：</label>{{ form.destination }}</br>
+  <label style="width:150px;">{{form.etc_key.label}}：</label>{{ form.etc_key }}</br>
+  <div style="height:50px;"></div>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary btn-block" style="width:200px;position:absolute;top:85%;left:35%;">予約</button>
+</div>
+</form>
+
+
+
+  </div>
+</div>
+</div>
+
+
